@@ -16,7 +16,7 @@ export const navLinks = [
 export const calculateSizes = (isSmall, isMobile, isTablet) => {
   return {
     merryScale: isSmall ? 1 : isMobile ? 1.4 : 2,
-    merryPosition: isMobile ? [0.5, -6.5, 0] : [0.25, -8, -1],
+    merryPosition: isMobile ? [0.5, -6.5, 0] : [0, -8, -1],
   };
 };
 

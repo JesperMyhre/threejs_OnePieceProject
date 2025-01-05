@@ -5,6 +5,7 @@ import GoingMerry from "../components/GoingMerry";
 import CanvasLoader from "../components/CanvasLoader";
 import { calculateSizes } from "../constants";
 import { useMediaQuery } from "react-responsive";
+import Ocean from "../components/Ocean";
 
 const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 480 });
@@ -18,7 +19,7 @@ const Hero = () => {
       <div className="w-full h-full absolute inset-0">
         <Canvas className="w-full h-full max-w-[2000px] mx-auto">
           <Suspense fallback={<CanvasLoader />}>
-            <PerspectiveCamera makeDefault position={[0, 0, 30]} />
+            <PerspectiveCamera makeDefault position={[0, 0, 20]} />
             <OrbitControls
               enableZoom={false}
               maxPolarAngle={Math.PI / 2}
@@ -29,6 +30,7 @@ const Hero = () => {
               scale={sizes.merryScale}
               rotation={[0, 0, 0]}
             />
+            <Ocean position={[0, -6.6, -4]} rotation={[0, 0, 0]}scale={[1, 1, 1]} />
             <ambientLight intensity={1} />
             <directionalLight position={[10, 10, 10]} intensity={2.5} />
           </Suspense>
