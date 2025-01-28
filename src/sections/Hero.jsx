@@ -1,4 +1,4 @@
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import {OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
 import GoingMerry from "../components/GoingMerry";
@@ -6,6 +6,7 @@ import CanvasLoader from "../components/CanvasLoader";
 import { calculateSizes } from "../constants";
 import { useMediaQuery } from "react-responsive";
 import Ocean from "../components/Ocean";
+import Cloud from "../components/Cloud";
 
 const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 480 });
@@ -30,7 +31,15 @@ const Hero = () => {
               scale={sizes.merryScale}
               rotation={[0, 0, 0]}
             />
-            <Ocean position={[0, -6.6, -4]} rotation={[0, 0, 0]}scale={[1, 1, 1]} />
+           <Cloud
+              animationProps={{ y: 3, duration: 2, ease: "power1.inOut", yoyo: true, repeat: -1 }}
+              position={[-2, 6, -8]} scale={.3}
+            />
+            <Cloud
+              animationProps={{ y: 6, duration: 3, ease: "power1.inOut", yoyo: true, repeat: -1 }}
+              position={[-19, 7, -5]} scale={.2}
+            />
+            <Ocean position={[0, -6.6, -4]} rotation={[0, 0, 0]} scale={[1, 1, 1]} />
             <ambientLight intensity={1} />
             <directionalLight position={[10, 10, 10]} intensity={2.5} />
           </Suspense>

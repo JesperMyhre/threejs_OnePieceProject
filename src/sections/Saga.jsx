@@ -1,46 +1,46 @@
 import { useEffect, useState } from "react";
-import { arcs, sagas } from "../constants";
+import { arcs } from "../constants";
+import Menu from "../components/Menu";
 
 const Saga = () => {
-  /*   const [sagaData, setSagaData] = useState([]);
-  useEffect(() => {
-    fetch("https://api.api-onepiece.com/v2/sagas/en")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setSagaData(data);
-      });
-  }, []); */
   return (
-    <section className="w-full max-h flex flex-col justify-center items-center gap-4">
+    <section className="w-full max-h flex flex-col justify-center items-center gap-4 bg-blue-600 py-2">
+      <Menu />
       {arcs.map((item) => (
         <div
           key={item.id}
-          className="w-4/5 flex flex-row justify-between items-center border-solid gap-5 border-2 border-blue-500 rounded-lg"
+          className=" h-auto w-5/6 flex flex-row justify-between border-solid gap-5 border-2 border-blue-500 rounded-lg"
         >
           <div className="text-left text-white place-self-end relative">
-            <div
-              className="relative w-[300px] h-[300px] bg-cover bg-center rounded-lg"
-              style={{ backgroundImage: `url(${item.img})` }}
-            >
-              {/*               <img
-                className="h-[300px] w-auto object-cover"
-                src={item.img}
-                alt={`${item.arc} poster`}
-              /> */}
-            </div>
-            <div className="absolute bottom-0 left-0 w-full bg-black-300 opacity-50 rounded-lg p-3">
-              <p>{item.saga}</p>
-              <h2 className="text-2xl font-semibold">{item.arc}</h2>
-            </div>
+            <img
+              className="relative w-[600px] h-[600px] bg-cover bg-center rounded-lg"
+              src={item.img}
+              style={{
+                backgroundImage: `linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))`,
+                WebkitMaskImage: `linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))`,
+                maskImage: `linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))`,
+              }}
+            />
           </div>
 
           <div className="w-1/2">
-            <p className="text-white-600 p-5 hover:brightness-125">
+            <h2 className="text-2xl font-semibold text-white">{item.arc}</h2>
+            <p className="text-white">{item.saga}</p>
+            <p className="text-white p-5">
               {item.desc}
             </p>
+            <div className="flex flex-row gap-2 flex-wrap">
+            {item.events && item.events.length > 0 ? (
+              item.events.map((event) => (
+                <div key={event.id} className="event-container" style={{ background: event.color }}>
+                  <img src={event.img} alt="Event" className="w-auto h-8 rounded-lg"/>
+                  {event.title}
+                </div>
+              ))
+            ) : (
+              <p className="text-white">No events available</p>
+            )}
+            </div>
           </div>
         </div>
       ))}

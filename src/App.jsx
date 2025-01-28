@@ -1,6 +1,7 @@
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import Saga from "./sections/Saga";
+import Fruits from "./sections/Fruits";
 
 function App() {
   return (
@@ -8,7 +9,8 @@ function App() {
       <main>
         <Navbar />
         <Hero />
-        <Saga />
+        {/* <Saga /> */}
+        <Fruits />  
       </main>
     </>
   );
